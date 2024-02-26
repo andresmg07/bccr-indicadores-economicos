@@ -72,10 +72,10 @@ Utilice el método asincrónico `bccrWS.request(code)` para recuperar el valor a
 
 ```js
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
-const colonDollarSellPrice = await bccrWS.request('318');
+const currentColonDollarSellPrice = await bccrWS.request('318');
 ```
 
-Como resultado del extracto de código anterior valor contenido en la constante `colonDollarSellPrice` tiene una estructura tal como la siguiente:
+Como resultado del extracto de código anterior el valor contenido en la constante `currentColonDollarSellPrice` tiene una estructura tal como la siguiente:
 
 ```js
 { code: '318', date: '2024-02-26T00:00:00-06:00', value: 511.27 }
@@ -89,10 +89,10 @@ Utilice el método asincrónico `bccrWS.request(code, startDate, endDate)` para 
 // Fecha que de la cual desea recuperar el indicador económico.
 const targetDate = new Date(2024, 0, 1);
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
-const colonDollarSellPrice = await bccrWS.request('318', targetDate, targetDate);
+const singleColonDollarSellPrice = await bccrWS.request('318', targetDate, targetDate);
 ```
 
-Como resultado del extracto de código anterior valor contenido en la constante `colonDollarSellPrice` tiene una estructura tal como la siguiente:
+Como resultado del extracto de código anterior el valor contenido en la constante `singleColonDollarSellPrice` tiene una estructura tal como la siguiente:
 
 
 ```js
@@ -109,18 +109,18 @@ const startDate = new Date(2024, 0, 1);
 // Fecha que de fin del rango que se desea recuperar.
 const endDate = new Date(2024, 0, 5);
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
-const colonDollarSellPrice = await bccrWS.request('318', startDate, endDate);
+const rangedColonDollarSellPrice = await bccrWS.request('318', startDate, endDate);
 ```
 
-Como resultado del extracto de código anterior valor contenido en la constante `colonDollarSellPrice` tiene una estructura tal como la siguiente:
+Como resultado del extracto de código anterior el valor contenido en la constante `rangedColonDollarSellPrice` tiene una estructura tal como la siguiente:
 
 
 ```js
-[{ code: '317', date: '2024-01-01T00:00:00-06:00', value: 519.21 },
-    { code: '317', date: '2024-01-02T00:00:00-06:00', value: 519.21 },
-    { code: '317', date: '2024-01-03T00:00:00-06:00', value: 518.92 },
-    { code: '317', date: '2024-01-04T00:00:00-06:00', value: 518.01 },
-    { code: '317', date: '2024-01-05T00:00:00-06:00', value: 516.88 }]
+[{ code: '318', date: '2024-01-01T00:00:00-06:00', value: 519.21 },
+    { code: '318', date: '2024-01-02T00:00:00-06:00', value: 519.21 },
+    { code: '318', date: '2024-01-03T00:00:00-06:00', value: 518.92 },
+    { code: '318', date: '2024-01-04T00:00:00-06:00', value: 518.01 },
+    { code: '318', date: '2024-01-05T00:00:00-06:00', value: 516.88 }]
 ```
 
 ### Recuperar valores compuestos

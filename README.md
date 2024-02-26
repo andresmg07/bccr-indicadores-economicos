@@ -20,6 +20,7 @@ Para la recuperación de indicadores económicos es necesario el registro ante l
     - [Instalación](#instalación)
     - [Uso](#uso)
         - [Importación](#importación)
+        - [Intancia de objeto BCCRWebService](#intancia-de-objeto-BCCRWebService)
         - [Recuperar el valor actual de un indicador](#recuperar-el-valor-actual-de-un-indicador)
         - [Recuperar el valor de un indicador en una fecha específica](#recuperar-el-valor-de-un-indicador-en-una-fecha-específica)
         - [Recuperar el valor de un indicador en un rango de fechas](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas)
@@ -27,6 +28,7 @@ Para la recuperación de indicadores económicos es necesario el registro ante l
     - [Lista de indicadores públicos](#lista-de-indicadores-públicos)
     - [Limitaciones](#limitaciones)
     - [Versionamiento](#versionamiento) 
+    - [Autor](#autor)
     - [Licencia](#licencia)
 
 

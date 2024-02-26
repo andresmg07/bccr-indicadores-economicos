@@ -1,6 +1,7 @@
-import {getResponseData} from "./util/requestUtil";
+import {getResponseData} from "./util/responseUtil";
 import {DataPoint} from "./types/BCCR.types";
 import {validateConstructor, validateRequestParameters} from "./util/validationUtil";
+import {fetchBCCRWebService, getLastAvailableDate} from "./util/requestUtil";
 
 
 module.exports = class BCCRWebService {
@@ -31,21 +32,27 @@ module.exports = class BCCRWebService {
      * @param compound Retrieve nested data flag.
      */
     request = (code: string, startDate: Date, endDate: Date, compound: boolean = false) : Promise<DataPoint | DataPoint[]> => {
-        validateRequestParameters(code, startDate, endDate, )
+        validateRequestParameters(code, startDate, endDate)
         return new Promise( async (resolve, reject) => {
             // Date object conversion into request compatible format.
-            const formattedStartDate: string = startDate.toLocaleDateString('es-ES', {timeZone: 'UTC'})
-            const formattedEndDate: string = endDate.toLocaleDateString('es-ES', {timeZone: 'UTC'})
+            let formattedStartDate: string
+            let formattedEndDate: string
+            if(startDate && endDate){
+                formattedStartDate = startDate.toLocaleDateString('es-ES', {timeZone: 'UTC'})
+                formattedEndDate = endDate.toLocaleDateString('es-ES', {timeZone: 'UTC'})
+            }else{
+                const formattedTargetDate = (await getLastAvailableDate(this.host, code, new Date(), this.email, this.token)).toLocaleDateString('es-ES', {timeZone: 'UTC'})
+                formattedStartDate = formattedTargetDate
+                formattedEndDate = formattedTargetDate
+            }
             // Boolean compound property conversion into request compatible format.
             const formattedCompound: string = compound ? 'S' : 'N'
-            // Request parameters string construction
-            const params: string = `/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx/ObtenerIndicadoresEconomicos?Indicador=${code}&FechaInicio=${formattedStartDate}&FechaFinal=${formattedEndDate}&Nombre=N&SubNiveles=${formattedCompound}&CorreoElectronico=${this.email}&Token=${this.token}`
-            try{
-                // Data retrieval and formatting.
-                resolve(getResponseData( await fetch(this.host + params)));
-            }catch (e){
-                reject(e)
-            }
+            fetchBCCRWebService(this.host, code, formattedStartDate, formattedEndDate, formattedCompound, this.email, this.token)
+                .then(response => getResponseData(response))
+                .then(data => resolve(data))
+                .catch(e => reject(e))
         })
     }
+
+
 }

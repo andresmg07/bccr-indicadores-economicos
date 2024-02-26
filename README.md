@@ -133,7 +133,7 @@ const startDate = new Date(2024, 0, 1);
 // Fecha que de fin del rango que se desea recuperar.
 const endDate = new Date(2024, 0, 5);
 // Ejemplo con código 25633: Curvas de rendimiento soveranas (indicador compuesto).
-const colonDollarSellPrice = await bccrWS.request('25633', startDate, endDate, true);
+const compoundColonDollarSellPrice = await bccrWS.request('25633', startDate, endDate, true);
 ```
 
 ## Lista de indicadores públicos

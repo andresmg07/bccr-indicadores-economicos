@@ -1,17 +1,41 @@
-import {isDate, isStringObject} from "node:util/types";
+import {DOMParser} from "xmldom";
+import {isDate} from "node:util/types";
+import {fetchBCCRWebService} from "./requestUtil";
+
+const BCCR_ERROR_TAG = 'Error'
+
+/**
+ * Utilitarian procedure that validates credentials given by the user with a dummy request to BCCR web service.
+ * @param email Email registered before BCCR for web service.
+ * @param token Access token given by BCCR for web service.
+ */
+export const validateCredentials = (email: string, token: string) : void => {
+    // Target dummy data definition and formatting.
+    const formattedDummyDate : string = new Date().toLocaleDateString('es-ES', {timeZone: 'UTC'})
+    // Dummy request and checks if error tag is present in the response.
+    fetchBCCRWebService('0', formattedDummyDate, formattedDummyDate, 'N', email, token)
+        .then(response => response.text())
+        .then(txt => {
+            if(new DOMParser().parseFromString(txt).documentElement.getElementsByTagName(BCCR_ERROR_TAG).length){
+                throw new Error('Bad credentials. Email or token (or both) rejected by BCCR web service.')
+            }
+        })
+
+}
 
 /**
  * Utilitarian function that checks BCCRWebService constructor method parameters integrity.
  * @param email Email registered before BCCR for web service.
  * @param token Access token given by BCCR for web service.
  */
-export const validateConstructor = (email: string, token:string) : void => {
+export const validateConstructorParameters = (email: string, token:string) : void => {
     if(!email.length){
         throw new Error('Found empty string as email constructor parameter. This parameter must be an string containing a valid email address.')
     }
     if(!token.length){
         throw new Error('Found empty string as token constructor parameter. This parameter must be an string containing an alphanumerical value.')
     }
+
 }
 
 /**

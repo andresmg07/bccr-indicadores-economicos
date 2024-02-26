@@ -24,7 +24,7 @@ const getSingleValueByTagName = (response: string, tagName: string) : string  =>
  */
 const getValuesByTagName = (response: string, tagName: string) : string[] => {
     const nodes : Element[] = Array.from(new DOMParser().parseFromString(response).documentElement.getElementsByTagName(tagName))
-    return nodes.map((node : Element) => {
+    return nodes.map(node => {
         let nodeValue = ""
         if(node.firstChild && node.firstChild.nodeValue){ nodeValue = node.firstChild.nodeValue }
         return nodeValue
@@ -83,9 +83,9 @@ const getDataSet = (dataSet: string) : DataPoint[] => {
  */
 export const getResponseData = (res: Response) : Promise<DataPoint | DataPoint[]> => {
     return new Promise((resolve, reject) => {
-        res.text().then( (txt : string) => {
-            // Check response length to select data extraction method.
-            if(getResponseLength(txt) === 1){
+        res.text().then(txt => {
+            // Check response length to select data handle method.
+            if(getResponseLength(txt) === 1) {
                 resolve(getDataPoint(txt))
             }else{
                 resolve(getDataSet(txt))

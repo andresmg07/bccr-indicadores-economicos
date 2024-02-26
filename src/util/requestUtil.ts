@@ -12,7 +12,7 @@ import {getResponseLength} from "./responseUtil";
 export const fetchBCCRWebService = (code: string, startDate: string, endDate: string, compound: string, email: string, token: string) : Promise<Response> => {
     return new Promise( async (resolve, reject) => {
         // Request parameters string construction.
-        const params: string = `/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx/ObtenerIndicadoresEconomicos?Indicador=${code}&FechaInicio=${startDate}&FechaFinal=${endDate}&Nombre=N&SubNiveles=${compound}&CorreoElectronico=${email}&Token=${token}`
+        const params: string = `/Indicadores/Suscripciones/WS/wsindicadoreseconomicos.asmx/ObtenerIndicadoresEconomicosXML?Indicador=${code}&FechaInicio=${startDate}&FechaFinal=${endDate}&Nombre=N&SubNiveles=${compound}&CorreoElectronico=${email}&Token=${token}`
         try{
             resolve(await fetch('https://gee.bccr.fi.cr' + params));
         }catch (e){

@@ -1,6 +1,6 @@
-import {DOMParser} from "xmldom";
 import {isDate} from "node:util/types";
 import {fetchBCCRWebService} from "./requestUtil";
+import {parseXMLStringToJSON} from "./responseUtil";
 
 const BCCR_ERROR_TAG = 'Error'
 
@@ -13,10 +13,12 @@ export const validateCredentials = (email: string, token: string) : void => {
     // Target dummy data definition and formatting.
     const formattedDummyDate : string = new Date().toLocaleDateString('es-ES', {timeZone: 'UTC'})
     // Dummy request and checks if error tag is present in the response.
-    fetchBCCRWebService('0', formattedDummyDate, formattedDummyDate, 'N', email, token)
+    fetchBCCRWebService('318', formattedDummyDate, formattedDummyDate, 'N', email, token)
         .then(response => response.text())
         .then(txt => {
-            if(new DOMParser().parseFromString(txt).documentElement.getElementsByTagName(BCCR_ERROR_TAG).length){
+            try{
+                parseXMLStringToJSON(txt)
+            }catch{
                 throw new Error('Bad credentials. Email or token (or both) rejected by BCCR web service.')
             }
         })

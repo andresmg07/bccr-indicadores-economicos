@@ -1,4 +1,4 @@
-import {DOMParser} from "xmldom";
+import {parseString} from "xml2js"
 import {DataPoint} from "../types/BCCR.types";
 
 const BCCR_VALUE_TAG: string = "NUM_VALOR"
@@ -11,10 +11,8 @@ const BCCR_CODE_TAG: string = "COD_INDICADORINTERNO"
  * @param tagName Target tag name to fetch.
  */
 const getSingleValueByTagName = (response: string, tagName: string) : string  => {
-    const node : Element | null  = new DOMParser().parseFromString(response).documentElement.getElementsByTagName(tagName)[0]
-    let nodeValue = ""
-    if(node.firstChild && node.firstChild.nodeValue){ nodeValue = node.firstChild.nodeValue }
-    return nodeValue
+    return parseXMLStringToJSON(response)[0][tagName][0]
+
 }
 
 /**
@@ -22,13 +20,28 @@ const getSingleValueByTagName = (response: string, tagName: string) : string  =>
  * @param response XML structured text.
  * @param tagName Target tag name to fetch.
  */
-const getValuesByTagName = (response: string, tagName: string) : string[] => {
-    const nodes : Element[] = Array.from(new DOMParser().parseFromString(response).documentElement.getElementsByTagName(tagName))
-    return nodes.map(node => {
-        let nodeValue = ""
-        if(node.firstChild && node.firstChild.nodeValue){ nodeValue = node.firstChild.nodeValue }
-        return nodeValue
+const getValuesByTagName = (response: string, tagName: string) : any[] => {
+    return parseXMLStringToJSON(response).map(node => node[tagName][0])
+}
+
+/**
+ * Utilitarian function that parses an XML formatted string into a JSON.
+ * @param XMLString
+ */
+export const parseXMLStringToJSON = (XMLString:string) : any[] => {
+    // Parse result temp variable.
+    let parseResult:any[] = []
+    // First level of parsing. This extract the superficial structure of BCCR XML response.
+    parseString(XMLString, (partialErr, partialResult) => {
+        if(partialErr){ throw new Error(partialErr.message) }
+        // Second level of parsing. This extract the data set.
+        parseString(partialResult.string['_'], (jsonParsedErr, jsonParsedResult) => {
+            if(jsonParsedErr){ throw new Error(jsonParsedErr.message) }
+            // Parse result temp variable assignation.
+            parseResult =  jsonParsedResult.Datos_de_INGC011_CAT_INDICADORECONOMIC.INGC011_CAT_INDICADORECONOMIC
+        })
     })
+    return parseResult
 }
 
 /**
@@ -36,7 +49,7 @@ const getValuesByTagName = (response: string, tagName: string) : string[] => {
  * @param response XML structured text.
  */
 export const getResponseLength = (response: string) : number => {
-    return new DOMParser().parseFromString(response).documentElement.getElementsByTagName(BCCR_VALUE_TAG).length
+    return parseXMLStringToJSON(response).length
 }
 
 /**

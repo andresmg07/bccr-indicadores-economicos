@@ -9,3 +9,9 @@
 
 # IDE files
 .idea
+
+# Test file
+src/test.ts
+
+# Local variable files
+.env

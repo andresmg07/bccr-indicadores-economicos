@@ -1,48 +1,49 @@
 {
-  "name": "bccr-indicadores-economicos",
-  "version": "1.0.1",
-  "description": "Interfaz para servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "start": "tsc && node dist/index.js",
-    "build": "tsup",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andresmg07/bccr-indicadores-economicos.git"
-  },
-  "keywords": [
-    "bccr",
-    "indicadores",
-    "economicos",
-    "dolar",
-    "colon",
-    "cambio",
-    "banco",
-    "central",
-    "costa",
-    "rica"
-  ],
-  "author": "andresmg07",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/andresmg07/bccr-indicadores-economicos/issues"
-  },
-  "homepage": "https://github.com/andresmg07/bccr-indicadores-economicos#readme",
-  "dependencies": {
-    "xml2js": "^0.6.2"
-  },
-  "devDependencies": {
-    "@types/node": "^20.11.20",
-    "@types/xml2js": "^0.4.14",
-    "ts-node-dev": "^2.0.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
-  }
+    "name": "bccr-indicadores-economicos",
+    "version": "1.0.1",
+    "description": "Interfaz para servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "start": "tsup && node dist/index.js",
+        "test": "tsup && node dist/test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/andresmg07/bccr-indicadores-economicos.git"
+    },
+    "keywords": [
+        "bccr",
+        "indicadores",
+        "economicos",
+        "dolar",
+        "colon",
+        "cambio",
+        "banco",
+        "central",
+        "costa",
+        "rica"
+    ],
+    "author": "andresmg07",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/andresmg07/bccr-indicadores-economicos/issues"
+    },
+    "homepage": "https://github.com/andresmg07/bccr-indicadores-economicos#readme",
+    "dependencies": {
+        "xml2js": "^0.6.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.20",
+        "@types/xml2js": "^0.4.14",
+        "prettier": "3.2.5",
+        "ts-node-dev": "^2.0.0",
+        "tsup": "^8.0.2",
+        "typescript": "^5.3.3"
+    }
 }

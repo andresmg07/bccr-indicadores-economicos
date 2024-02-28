@@ -1,9 +1,7 @@
 type DataPoint = {
-    code: string,
-    date: string,
-    value: number
-}
+    code: string;
+    date: string;
+    value: number;
+};
 
-export type {
-    DataPoint
-}
+export type { DataPoint };

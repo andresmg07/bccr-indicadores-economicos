@@ -1,1 +1,1 @@
-module.exports = require('./BCCRWebService')
+module.exports = require("./BCCRWebService");

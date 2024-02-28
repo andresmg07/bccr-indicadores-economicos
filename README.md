@@ -1,3 +1,7 @@
+# BCCR indicadores económicos
+
+Interfaz para consumo del servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).
+
 [![npm version](https://badge.fury.io/js/bccr-indicadores-economicos.svg)](https://badge.fury.io/js/bccr-indicadores-economicos)
 [![npm](https://img.shields.io/npm/dm/bccr-indicadores-economicos.svg)](https://www.npmjs.com/package/bccr-indicadores-economicos)
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/bccr-indicadores-economicos)
@@ -5,11 +9,6 @@
 [![code style: prettier](https://img.shields.io/badge/Prettier-Prettier?style=flat&logo=prettier&logoColor=white&labelColor=%23bf85bf&color=%23bf85bf)](https://github.com/prettier/prettier)
 [![language: typescript](https://img.shields.io/badge/TypeScript-typescript?style=flat&logo=typescript&logoColor=white&labelColor=%233178C6&color=%233178C6)](https://www.typescriptlang.org/)
 
-
-
-# BCCR indicadores económicos
-
-Interfaz para consumo del servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).
 
 ## Pre-requisitos
 
@@ -149,7 +148,7 @@ Para aquellos indicadores de estructura de datos compuestas utilice el método a
 const startDate = new Date(2024, 0, 1);
 // Fecha que de fin del rango que se desea recuperar.
 const endDate = new Date(2024, 0, 5);
-// Ejemplo con código 25633: Curvas de rendimiento soveranas (indicador compuesto).
+// Ejemplo con código 25633: Curvas de rendimiento soberanas (indicador compuesto). Considerar que este indicador es publicado por el BCCR cada miércoles en una frecuencia semanal.
 const compoundColonDollarSellPrice = await bccrWS.request(
     "25633",
     startDate,

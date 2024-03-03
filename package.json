@@ -1,6 +1,6 @@
 {
     "name": "bccr-indicadores-economicos",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "description": "Interfaz para servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -19,15 +19,15 @@
     },
     "keywords": [
         "bccr",
+        "banco central",
         "indicadores",
         "economicos",
         "dolar",
         "colon",
-        "cambio",
-        "banco",
-        "central",
+        "tipo de cambio",
         "costa",
-        "rica"
+        "rica",
+        "cr"
     ],
     "author": "andresmg07",
     "license": "MIT",

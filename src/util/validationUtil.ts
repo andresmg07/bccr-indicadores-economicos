@@ -19,7 +19,6 @@ export const validateCredentials = (email: string, token: string): void => {
         "318",
         formattedDummyDate,
         formattedDummyDate,
-        "N",
         email,
         token,
     )
@@ -77,24 +76,22 @@ export const validateRequestParameters = (
             "Indicator code parameter must be an string containing a numerical value.",
         );
     }
-    if (!isDate(startDate) && endDate) {
+    if (startDate && !isDate(startDate)) {
         throw new Error(
-            "To retrieve time ranged indicators startDate parameter must be given as a Date object instance.",
+            "startDate parameter must be a Date object instance.",
         );
     }
-    if (!isDate(endDate) && startDate) {
+    if (endDate && !isDate(endDate)) {
         throw new Error(
-            "To retrieve time ranged indicators endDate parameter must be given as a Date object instance.",
+            "endDate parameter must be a Date object instance.",
         );
     }
-    if (startDate && endDate) {
-        if (startDate > new Date() || endDate > new Date()) {
-            throw new Error(
-                "endDate parameter nor startDate can be dates in the future.",
-            );
-        }
-        if (startDate > endDate) {
-            throw new Error("endDate parameter must greater than startDate.");
-        }
+    if (startDate > new Date() || endDate > new Date()) {
+        throw new Error(
+            "endDate parameter nor startDate parameter can be dates in the future.",
+        );
+    }
+    if (startDate > endDate) {
+        throw new Error("endDate parameter must a date after startDate parameter date.");
     }
 };

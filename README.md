@@ -30,8 +30,7 @@ Para la recuperación de indicadores económicos es necesario el registro ante l
         -   [Intancia de objeto BCCRWebService](#intancia-de-objeto-BCCRWebService)
         -   [Recuperar el valor actual de un indicador](#recuperar-el-valor-actual-de-un-indicador)
         -   [Recuperar el valor de un indicador en una fecha específica](#recuperar-el-valor-de-un-indicador-en-una-fecha-específica)
-        -   [Recuperar el valor de un indicador en un rango de fechas](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas)
-        -   [Recuperar el valor de un indicador compuesto](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas)
+        -   [Recuperar el valor de un indicador en un rango de fechas](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas) 
     -   [Lista de indicadores públicos](#lista-de-indicadores-públicos)
     -   [Limitaciones](#limitaciones)
     -   [Versionamiento](#versionamiento)
@@ -72,7 +71,15 @@ Para la instanciación del objeto _BCCRWebService_ se debe ingresar el correo el
 const bccrWS = new BCCRWebService("ejemplo@email.com", "EJEMPLOTOKEN");
 ```
 
-Este objeto cuenta con un único método asincrónico: `request(code, startDate, endDate, compound)` el cual permitirá la recuperación de indicadores económicos del servicio web del BCCR.
+
+
+Esta clase cuenta con un único método **asincrónico** sobrecargado el cual permitirá la recuperación de indicadores económicos del servicio web del BCCR con la sintaxis expuesta a continuación.
+
+```js
+request(code)
+request(code, targetDate)
+request(code, startDate, endDate)
+```
 
 ### Recuperar el valor actual de un indicador
 
@@ -91,17 +98,13 @@ Como resultado del extracto de código anterior el valor contenido en la constan
 
 ### Recuperar el valor de un indicador en una fecha específica
 
-Utilice el método asincrónico `bccrWS.request(code, startDate, endDate)` para recuperar el valor de un indicador económico en una fecha específica. El valor asignado a los parametros `startDate` y `endDate` debe de ser el mismo.
+Utilice el método asincrónico `bccrWS.request(code, targetDate)` para recuperar el valor de un indicador económico en una fecha específica. 
 
 ```js
 // Fecha que de la cual desea recuperar el indicador económico.
 const targetDate = new Date(2024, 0, 1);
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
-const singleColonDollarSellPrice = await bccrWS.request(
-    "318",
-    targetDate,
-    targetDate,
-);
+const singleColonDollarSellPrice = await bccrWS.request( "318", targetDate);
 ```
 
 Como resultado del extracto de código anterior el valor contenido en la constante `singleColonDollarSellPrice` tiene una estructura tal como la siguiente:
@@ -137,24 +140,6 @@ Como resultado del extracto de código anterior el valor contenido en la constan
     { code: "318", date: "2024-01-04T00:00:00-06:00", value: 518.01 },
     { code: "318", date: "2024-01-05T00:00:00-06:00", value: 516.88 },
 ];
-```
-
-### Recuperar valores compuestos
-
-Para aquellos indicadores de estructura de datos compuestas utilice el método asincrónico `bccrWS.request(code, startDate, endDate, compound)` para recuperar la jerarquía asociada al indicador económico. El parámentro `compound` es de tipo boleano y por defecto asignado en falso.
-
-```js
-// Fecha que de inicio del rango que se desea recuperar.
-const startDate = new Date(2024, 0, 1);
-// Fecha que de fin del rango que se desea recuperar.
-const endDate = new Date(2024, 0, 5);
-// Ejemplo con código 25633: Curvas de rendimiento soberanas (indicador compuesto). Considerar que este indicador es publicado por el BCCR cada miércoles en una frecuencia semanal.
-const compoundColonDollarSellPrice = await bccrWS.request(
-    "25633",
-    startDate,
-    endDate,
-    true,
-);
 ```
 
 ## Lista de indicadores públicos

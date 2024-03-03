@@ -63,17 +63,15 @@ const BCCRWebService = require("bccr-indicadores-economicos");
 import BCCRWebService from "bccr-indicadores-economicos";
 ```
 
-### Intancia de objeto BCCRWebService
+### Clase BCCRWebService
 
-Para la instanciación del objeto _BCCRWebService_ se debe ingresar el correo electrónico registrado ante el Banco Central y el _token_ generado por el sistema. Se recomienda almacenar estas credenciales de manera segura en variables del entorno (consultar biblioteca [dotenv](https://www.npmjs.com/package/dotenv)).
+El constructor de la clase _BCCRWebService_ recibe como parámetros el correo electrónico registrado ante el Banco Central y el _token_ generado por el sistema de la misma entidad. Se recomienda almacenar estas credenciales de manera segura en variables del entorno (consultar biblioteca [dotenv](https://www.npmjs.com/package/dotenv)).
 
 ```js
 const bccrWS = new BCCRWebService("ejemplo@email.com", "EJEMPLOTOKEN");
 ```
 
-
-
-Esta clase cuenta con un único método **asincrónico** sobrecargado el cual permitirá la recuperación de indicadores económicos del servicio web del BCCR con la sintaxis expuesta a continuación.
+Esta clase cuenta con un único método **asincrónico y sobrecargado** mediante el cual se realizan peticiones al servicio web del BCCR con la sintaxis expuesta a continuación.
 
 ```js
 request(code)
@@ -159,9 +157,9 @@ Para obtener el listado completo de indicadores económicos públicos en el serv
 
 ## Limitaciones
 
-**ESTA BIBLIOTECA ESTÁ DESARROLLADA PARA SU USO EXCLUSIVO DESDE EL LADO DEL SERVIDOR**.
+**ESTA BIBLIOTECA ESTÁ DESARROLLADA PARA SU USO DESDE EL LADO DEL SERVIDOR**.
 
-Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Por lo tanto, su implementación desde el lado del cliente (_frontend_) ocasionrá problemas al momento de solicitar recursos desde un buscador web al servicio web del BCCR.
+Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Por lo tanto, si su implementación desde el lado del cliente (_frontend_) ocasionrá problemas al momento de solicitar recursos desde un buscador web hacia al servicio web del BCCR.
 
 ## Versionamiento
 

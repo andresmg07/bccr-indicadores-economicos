@@ -14,9 +14,9 @@ Interfaz para consumo del servicio web de indicadores económicos del Banco Cent
 
 ### Registro a servicio web de indicadores económicos del BCCR
 
-Para la recuperación de indicadores económicos es necesario el registro ante la entidad bancaria, este procedimiento se puede realizar llenando el siguiente formulario: [Formulario de registro a servicio web BCCR](https://www.bccr.fi.cr/indicadores-economicos/servicio-web).
+Para la recuperación de indicadores económicos es necesario el registro ante la institución bancaria: [Formulario de registro a servicio web BCCR](https://www.bccr.fi.cr/indicadores-economicos/servicio-web).
 
-**El correo electrónico registrado en el servicio web así como el _token_ generado por el servicio web del BCCR son necesarios para el funcionamiento de esta biblioteca.**
+**El correo electrónico registrado y el _token_ generado por el servicio web del BCCR son necesarios para el funcionamiento de esta biblioteca.**
 
 ## Tabla de contenidos
 
@@ -27,7 +27,7 @@ Para la recuperación de indicadores económicos es necesario el registro ante l
     -   [Instalación](#instalación)
     -   [Uso](#uso)
         -   [Importación](#importación)
-        -   [Intancia de objeto BCCRWebService](#intancia-de-objeto-BCCRWebService)
+        -   [Clase BCCRWebService](#intancia-de-objeto-BCCRWebService)
         -   [Recuperar el valor actual de un indicador](#recuperar-el-valor-actual-de-un-indicador)
         -   [Recuperar el valor de un indicador en una fecha específica](#recuperar-el-valor-de-un-indicador-en-una-fecha-específica)
         -   [Recuperar el valor de un indicador en un rango de fechas](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas) 

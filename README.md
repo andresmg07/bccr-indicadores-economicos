@@ -39,15 +39,13 @@ Para la recuperación de indicadores económicos es necesario el registro ante l
 
 ## Instalación
 
-Instale la biblioteca ejecutando en el directorio de su proyecto el comando:
-
 ```sh
 $ npm install bccr-indicadores-economicos
 ```
 
 ## Uso
 
-**ANTES DE UTILIZAR:** Completar registro ante BCCR como se indica en los [pre-requisitos](#pre-requisitos) y chequear la lista de indicadores públicos en [lista de indicadores públicos](#lista-de-indicadores-públicos).
+**ANTES DE UTILIZAR:** Completar los pasos indicados en [pre-requisitos](#pre-requisitos) y chequear la lista de indicadores públicos en [lista de indicadores públicos](#lista-de-indicadores-públicos).
 
 ### Importación
 
@@ -57,7 +55,7 @@ $ npm install bccr-indicadores-economicos
 const BCCRWebService = require("bccr-indicadores-economicos");
 ```
 
-##### ES6
+#### ES6
 
 ```js
 import BCCRWebService from "bccr-indicadores-economicos";
@@ -65,13 +63,13 @@ import BCCRWebService from "bccr-indicadores-economicos";
 
 ### Clase BCCRWebService
 
-El constructor de la clase _BCCRWebService_ recibe como parámetros el correo electrónico registrado ante el Banco Central y el _token_ generado por el sistema de la misma entidad. Se recomienda almacenar estas credenciales de manera segura en variables del entorno (consultar biblioteca [dotenv](https://www.npmjs.com/package/dotenv)).
+El constructor de la clase _BCCRWebService_ recibe como parámetros el correo electrónico registrado y el _token_ generado por el sistema del Banco Central.
 
 ```js
 const bccrWS = new BCCRWebService("ejemplo@email.com", "EJEMPLOTOKEN");
 ```
 
-Esta clase cuenta con un único método **asincrónico y sobrecargado** mediante el cual se realizan peticiones al servicio web del BCCR con la sintaxis expuesta a continuación.
+Esta clase cuenta con un único método: `request` el cual es **asincrónico y sobrecargado**.
 
 ```js
 request(code)
@@ -81,14 +79,14 @@ request(code, startDate, endDate)
 
 ### Recuperar el valor actual de un indicador
 
-Utilice el método asincrónico `bccrWS.request(code)` para recuperar el valor actual (último valor publicado por el BCCR) de un indicador económico.
+Utilice el método `bccrWS.request(code)` para recuperar el valor actual (último valor publicado por el BCCR) de un indicador económico.
 
 ```js
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
 const currentColonDollarSellPrice = await bccrWS.request("318");
 ```
 
-Como resultado del extracto de código anterior el valor contenido en la constante `currentColonDollarSellPrice` tiene una estructura tal como la siguiente:
+#### Resultado
 
 ```js
 { code: '318', date: '2024-02-26T00:00:00-06:00', value: 511.27 }
@@ -96,7 +94,7 @@ Como resultado del extracto de código anterior el valor contenido en la constan
 
 ### Recuperar el valor de un indicador en una fecha específica
 
-Utilice el método asincrónico `bccrWS.request(code, targetDate)` para recuperar el valor de un indicador económico en una fecha específica. 
+Utilice el método `bccrWS.request(code, targetDate)` para recuperar el valor de un indicador económico en una fecha específica. 
 
 ```js
 // Fecha que de la cual desea recuperar el indicador económico.
@@ -105,7 +103,7 @@ const targetDate = new Date(2024, 0, 1);
 const singleColonDollarSellPrice = await bccrWS.request( "318", targetDate);
 ```
 
-Como resultado del extracto de código anterior el valor contenido en la constante `singleColonDollarSellPrice` tiene una estructura tal como la siguiente:
+#### Resultado
 
 ```js
 { code: '318', date: '2024-01-01T00:00:00-06:00', value: 519.21 }
@@ -113,7 +111,7 @@ Como resultado del extracto de código anterior el valor contenido en la constan
 
 ### Recuperar el valor de un indicador en un rango de fechas
 
-Utilice el método asincrónico `bccrWS.request(code, startDate, endDate)` para recuperar el valor de un indicador económico en un rango de fechas.
+Utilice el método `bccrWS.request(code, startDate, endDate)` para recuperar el valor de un indicador económico en un rango de fechas.
 
 ```js
 // Fecha que de inicio del rango que se desea recuperar.
@@ -128,7 +126,7 @@ const rangedColonDollarSellPrice = await bccrWS.request(
 );
 ```
 
-Como resultado del extracto de código anterior el valor contenido en la constante `rangedColonDollarSellPrice` tiene una estructura tal como la siguiente:
+#### Resultado
 
 ```js
 [
@@ -137,7 +135,7 @@ Como resultado del extracto de código anterior el valor contenido en la constan
     { code: "318", date: "2024-01-03T00:00:00-06:00", value: 518.92 },
     { code: "318", date: "2024-01-04T00:00:00-06:00", value: 518.01 },
     { code: "318", date: "2024-01-05T00:00:00-06:00", value: 516.88 },
-];
+]
 ```
 
 ## Lista de indicadores públicos

@@ -1,6 +1,6 @@
 {
     "name": "bccr-indicadores-economicos",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "description": "Interfaz para consumo del servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",

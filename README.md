@@ -1,6 +1,6 @@
 # BCCR indicadores económicos
 
-Interfaz para consumo del servicio web de indicadores económicos del Banco Central de Costa Rica (BCCR).
+Interfaz para consumo del servicio web de indicadores económicos del Banco Central de Costa Rica (_BCCR_).
 
 [![npm version](https://badge.fury.io/js/bccr-indicadores-economicos.svg)](https://badge.fury.io/js/bccr-indicadores-economicos)
 [![npm](https://img.shields.io/npm/dm/bccr-indicadores-economicos.svg)](https://www.npmjs.com/package/bccr-indicadores-economicos)
@@ -12,22 +12,22 @@ Interfaz para consumo del servicio web de indicadores económicos del Banco Cent
 
 ## Pre-requisitos
 
-### Registro a servicio web de indicadores económicos del BCCR
+### Registro a servicio web de indicadores económicos del _BCCR_
 
-Para la recuperación de indicadores económicos es necesario el registro ante la institución bancaria: [Formulario de registro a servicio web BCCR](https://www.bccr.fi.cr/indicadores-economicos/servicio-web).
+Es necesario el registro en el servicio web del _BCCR_: [Formulario de registro a servicio web _BCCR_](https://www.bccr.fi.cr/indicadores-economicos/servicio-web).
 
-**El correo electrónico registrado y el _token_ generado por el servicio web del BCCR son necesarios para el funcionamiento de esta biblioteca.**
+**El correo electrónico registrado y el _token_ generado por el servicio web del _BCCR_ son necesarios para el funcionamiento de esta biblioteca.**
 
 ## Tabla de contenidos
 
--   [BCCR indicadores económicos](#BCCR-indicadores-económicos)
+-   [_BCCR_ indicadores económicos](#BCCR-indicadores-económicos)
     -   [Pre-requisitos](#pre-requisitos)
-        -   [Registro a servicio web de indicadores económicos del BCCR](#registro-a-servicio-web-de-indicadores-económicos-del-BCCR)
+        -   [Registro a servicio web de indicadores económicos del _BCCR_](#registro-a-servicio-web-de-indicadores-económicos-del-BCCR)
     -   [Tabla de contenidos](#tabla-de-contenidos)
     -   [Instalación](#instalación)
     -   [Uso](#uso)
         -   [Importación](#importación)
-        -   [Clase BCCRWebService](#intancia-de-objeto-BCCRWebService)
+        -   [Clase _BCCRWebService_](#Clase-BCCRWebService)
         -   [Recuperar el valor actual de un indicador](#recuperar-el-valor-actual-de-un-indicador)
         -   [Recuperar el valor de un indicador en una fecha específica](#recuperar-el-valor-de-un-indicador-en-una-fecha-específica)
         -   [Recuperar el valor de un indicador en un rango de fechas](#recuperar-el-valor-de-un-indicador-en-un-rango-de-fechas) 
@@ -61,7 +61,7 @@ const BCCRWebService = require("bccr-indicadores-economicos");
 import BCCRWebService from "bccr-indicadores-economicos";
 ```
 
-### Clase BCCRWebService
+### Clase _BCCRWebService_
 
 El constructor de la clase _BCCRWebService_ recibe como parámetros el correo electrónico registrado y el _token_ generado por el sistema del Banco Central.
 
@@ -79,7 +79,7 @@ request(code, startDate, endDate)
 
 ### Recuperar el valor actual de un indicador
 
-Utilice el método `bccrWS.request(code)` para recuperar el valor actual (último valor publicado por el BCCR) de un indicador económico.
+Utilice el método `bccrWS.request(code)` para recuperar el valor actual (último valor publicado por el _BCCR_) de un indicador económico.
 
 ```js
 // Ejemplo con código 318: Tipo de cambio venta dólar/colón.
@@ -151,13 +151,13 @@ Listado de indicadores económicos populares:
 | 3541   | TPM: Tasa de Política Monetaria    |
 | 423    | TBP: Tasa Básica Pasiva            |
 
-Para obtener el listado completo de indicadores económicos públicos en el servicio web del BCCR consulte el siguiente archivo: [Lista de indicadores públicos BCCR](https://gee.bccr.fi.cr/Indicadores/Suscripciones/UI/ConsultaIndicadores/ObtenerArchivo).
+Para obtener el listado completo de indicadores económicos públicos en el servicio web del _BCCR_ consulte el siguiente archivo: [Lista de indicadores públicos _BCCR_](https://gee.bccr.fi.cr/Indicadores/Suscripciones/UI/ConsultaIndicadores/ObtenerArchivo).
 
 ## Limitaciones
 
 **ESTA BIBLIOTECA ESTÁ DESARROLLADA PARA SU USO DESDE EL LADO DEL SERVIDOR**.
 
-Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Por lo tanto, si su implementación desde el lado del cliente (_frontend_) ocasionrá problemas al momento de solicitar recursos desde un buscador web hacia al servicio web del BCCR.
+Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Por lo tanto, aquellas llamadas desde el lado del cliente (_frontend_) ocasionrán problemas al momento de solicitar recursos al servicio web del _BCCR_.
 
 ## Versionamiento
 

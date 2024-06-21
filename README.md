@@ -157,7 +157,7 @@ Para obtener el listado completo de indicadores económicos públicos en el serv
 
 **ESTA BIBLIOTECA ESTÁ DESARROLLADA PARA SU USO DESDE EL LADO DEL SERVIDOR**.
 
-Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Por lo tanto, aquellas llamadas desde el lado del cliente (_frontend_) ocasionrán problemas al momento de solicitar recursos al servicio web del _BCCR_.
+Debido al bloqueo solicitudes de origen cruzado (_CORS_), toda petición debe ejecutarse desde un servidor web. Aquellas llamadas provenientes de un cliente (buscador web) serán rechazadas por el _BCCR_.
 
 ## Versionamiento
 
@@ -167,7 +167,7 @@ El sistema de versionamiento utilizado para esa biblioteca es [SemVer](http://se
 
 **Andrés Montero Gamboa**<br>
 Estudiante de ingeniería en computación<br>
-Instituto Tecnológico de Costa Rica<br>
+Tecnológico de Costa Rica (TEC)<br>
 [LinkedIn](https://www.linkedin.com/in/andres-montero-gamboa) | [GitHub](https://github.com/andresmg07)
 
 ## Licencia

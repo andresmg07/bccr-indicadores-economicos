@@ -50,15 +50,15 @@ module.exports = class BCCRWebService {
                     this.email,
                     this.token,
                   )
-                ).toLocaleDateString("es-ES", { timeZone: "UTC" });
+                ).toLocaleDateString("es-ES", { timeZone: "America/Costa_Rica" });
                 formattedStartDate = formattedEndDate = formattedTargetDate;
             } else {
                 // When startDate and endDate ARE provided values are formatted into locale string and assigned to corresponding variables.
                 formattedStartDate = startDate.toLocaleDateString("es-ES", {
-                    timeZone: "UTC",
+                    timeZone: "America/Costa_Rica",
                 });
                 formattedEndDate = endDate.toLocaleDateString("es-ES", {
-                    timeZone: "UTC",
+                    timeZone: "America/Costa_Rica",
                 });
             }
 

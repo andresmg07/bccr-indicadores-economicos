@@ -166,8 +166,8 @@ El sistema de versionamiento utilizado para esa biblioteca es [SemVer](http://se
 ## Autor
 
 **Andrés Montero Gamboa**<br>
-Estudiante de ingeniería en computación<br>
-Tecnológico de Costa Rica (TEC)<br>
+Ingeniero en computación<br>
+Graduado del Tecnológico de Costa Rica (TEC)<br>
 [LinkedIn](https://www.linkedin.com/in/andres-montero-gamboa) | [GitHub](https://github.com/andresmg07)
 
 ## Licencia
